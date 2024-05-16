@@ -1,17 +1,17 @@
 import { ResetGame } from "./ResetGame.jsx";
 import { Square } from "./Square.jsx";
 
-export function WinnerModal({ winner }) {
+export function WinnerModal({ winner, resetGame }) {
 	if (winner === null) return null;
 
-	const winnerText = winner === false ? "Empate" : "Ganó: ";
+	const winnerText = winner === false ? "Draw" : " won!";
 	return (
 		<section className="winner">
 			<div className="text">
 				<h2>{winnerText}</h2>
-				<header className="win">{winner && <Square>{winner}</Square>}</header>
+				{/* <header className="win">{winner && <Square>{winner}</Square>}</header> */}
 				<footer>
-					<ResetGame />
+					<ResetGame resetGame={resetGame} />
 				</footer>
 			</div>
 		</section>

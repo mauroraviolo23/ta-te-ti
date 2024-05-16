@@ -1,6 +1,6 @@
 export const TURNS = {
-	X: "✖️",
-	O: "⚪",
+	FIRST_PLAYER: "src/img/football-shoe-svgrepo-com.svg",
+	SECOND_PLAYER: "src/img/football-svgrepo-com.svg",
 };
 
 export const WINNER_COMBINATIONS = [
@@ -13,3 +13,21 @@ export const WINNER_COMBINATIONS = [
 	[0, 4, 8],
 	[2, 4, 6],
 ];
+
+export const DERBIES = {
+	SPAIN: {
+		home: "Barcelona",
+		away: "Real Madrid",
+		img: "src/img/flag-for-flag-spain-svgrepo-com.svg",
+	},
+	ARGENTINA: {
+		home: "Boca Juniors",
+		away: "River Plate",
+		img: "src/img/argentina-svgrepo-com.svg",
+	},
+	URUGUAY: {
+		home: "Nacional",
+		away: "Peñarol",
+		img: "src/img/flag-for-flag-uruguay-svgrepo-com.svg",
+	},
+};

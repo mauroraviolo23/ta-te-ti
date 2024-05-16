@@ -35,10 +35,26 @@ body {
   text-align: center;
 }
 
+.board-and-turns {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0px 10px;
+}
+
 .board h1 {
   color: #eee;
-  margin-bottom: 30px;
+  margin-bottom: 14px;
   font-size: 64px;
+  font-family: "Freeman", serif;
+}
+
+.board h2 {
+  margin: 0px;
+  color: rgb(9, 148, 241);
+  font-size: 36px;
+  font-family: "Patua One", serif;
+  transform: rotate(-2deg);
 }
 
 .board button {
@@ -65,13 +81,6 @@ body {
   gap: 10px;
 }
 
-.board-and-turns {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 0px 10px;
-}
-
 .turn {
   display: flex;
   justify-content: center;
@@ -89,14 +98,47 @@ body {
   border-color: transparent;
 }
 
-.square.is-selected {
-  border: 2px solid rgb(0, 255, 98);
-  background: rgba(0, 255, 98, 0.781);
+.player-board {
+  display: flex;
+  flex-direction: column;
+  place-items: center;
+  padding: 6px;
+  width: 140px;
 }
 
-.square.not-selected {
-  border: 2px solid rgb(248, 3, 3);
-  background: rgba(248, 3, 3, 0.39);
+.player {
+  height: 40px;
+  width: 40px;
+  background-color: red;
+  color: rgb(83, 105, 233);
+}
+
+.player img, .square img {
+  max-height: 100%;
+  max-width: 100%;
+}
+
+.player-title {
+  font-size: 30px;
+  font-family: "Freeman", serif;
+  margin: 10px;
+}
+
+.player-score {
+  font-family: "Patua One", serif;
+  color: rgb(9, 148, 241);
+}
+
+.player-score-number {
+  margin: 10px 0px;
+  font-size: 50px;
+  font-family: "Patua One", serif;
+  color: rgb(9, 148, 241);
+}
+
+.is-selected {
+  border: 2px solid rgb(0, 255, 98);
+  background: rgba(0, 255, 98, 0.781);
 }
 
 .winner {
@@ -145,6 +187,7 @@ body {
 
 .options {
   display: flex;
+  justify-content: center;
 }
 
 .config {
@@ -152,9 +195,30 @@ body {
   justify-content: center;
   align-items: center;
   padding: 6px;
+  margin: 0px 5px;
 }
 
 .config img{
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.derby-selection {
+  width: 80%;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+}
+
+.derby-flag {
+  width: 60px;
+  height: 60px;
+  display: flex;
+  place-items: center;
+  margin: 0px 5px;
+}
+
+.derby-flag-img {
   max-width: 100%;
   max-height: 100%;
 }

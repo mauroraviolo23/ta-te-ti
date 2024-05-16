@@ -5,7 +5,9 @@ import { Square } from "./components/Square.jsx";
 import { WinnerModal } from "./components/WinnerModal.jsx";
 import { Config } from "./components/Config.jsx";
 import { ResetGame } from "./components/ResetGame.jsx";
-import { TURNS, WINNER_COMBINATIONS } from "./constants.js";
+import { DERBIES, TURNS, WINNER_COMBINATIONS } from "./constants.js";
+import { Player } from "./components/Player.jsx";
+import { DerbyFlag } from "./components/DerbyFlag.jsx";
 
 function App() {
 	const [board, setBoard] = useState(() => {
@@ -16,15 +18,20 @@ function App() {
 	});
 	const [turn, setTurn] = useState(() => {
 		const turnForGameInProgress = window.localStorage.getItem("turn");
-		return turnForGameInProgress ?? TURNS.X;
+		return turnForGameInProgress ?? TURNS.FIRST_PLAYER;
 	});
 
 	// null === no winner, false === draw
 	const [winner, setWinner] = useState(null);
 
+	// TODO: ADD FUNCIONALITY TO SELECT DERBY AND ADD SVGs
+	const [derby, setDerby] = useState(DERBIES.SPAIN);
+
+	const selectDerby = () => {};
+
 	const resetGame = () => {
 		setBoard(Array(9).fill(null));
-		setTurn(TURNS.X);
+		setTurn(TURNS.FIRST_PLAYER);
 		setWinner(null);
 
 		window.localStorage.removeItem("board");
@@ -42,7 +49,8 @@ function App() {
 		newBoard[index] = turn;
 		setBoard(newBoard);
 
-		const newTurn = turn === TURNS.X ? TURNS.O : TURNS.X;
+		const newTurn =
+			turn === TURNS.FIRST_PLAYER ? TURNS.SECOND_PLAYER : TURNS.FIRST_PLAYER;
 		setTurn(newTurn);
 
 		window.localStorage.setItem("board", JSON.stringify(newBoard));
@@ -70,25 +78,46 @@ function App() {
 	return (
 		<main className="board">
 			<h1>Tic Tac Toe</h1>
+			<h2>Derbies Version</h2>
+			<div className="derby-selection">
+				<DerbyFlag flag={DERBIES.SPAIN.img}></DerbyFlag>
+				<DerbyFlag flag={DERBIES.URUGUAY.img}></DerbyFlag>
+				<DerbyFlag flag={DERBIES.ARGENTINA.img}></DerbyFlag>
+			</div>
 			<div className="board-and-turns">
-				<aside className="turn">
-					<Square isSelected={turn === TURNS.X}>{TURNS.X}</Square>
+				<aside>
+					<Player
+						isSelected={turn === TURNS.FIRST_PLAYER}
+						icon={TURNS.FIRST_PLAYER}
+						name={derby.home}
+						score={0}
+					>
+						{TURNS.FIRST_PLAYER}
+					</Player>
 				</aside>
 				<section className="game">
 					{board.map((cell, index) => {
+						console.log(cell);
 						return (
-							<Square key={index} index={index} updateBoard={updateBoard}>
-								{cell}
+							<Square icon={cell} key={index} index={index} updateBoard={updateBoard}>
+								{/* {cell} */}
 							</Square>
 						);
 					})}
 				</section>
-				<aside className="turn">
-					<Square isSelected={turn === TURNS.O}>{TURNS.O}</Square>
+				<aside>
+					<Player
+						isSelected={turn === TURNS.SECOND_PLAYER}
+						icon={TURNS.SECOND_PLAYER}
+						name={derby.away}
+						score={0}
+					>
+						{TURNS.SECOND_PLAYER}
+					</Player>
 				</aside>
 			</div>
 			<section className="options">
-				<WinnerModal winner={winner} />
+				<WinnerModal winner={winner} resetGame={resetGame} />
 				<ResetGame resetGame={resetGame} />
 				<Config />
 			</section>
