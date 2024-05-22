@@ -1,18 +1,20 @@
-import { ResetGame } from "./ResetGame.jsx";
-import { Square } from "./Square.jsx";
-
-export function WinnerModal({ winner, resetGame }) {
+export function WinnerModal({ winner, derby, resetGame }) {
 	if (winner === null) return null;
 
-	const winnerText = winner === false ? "Draw" : " won!";
+	const winnerText = winner === false ? "Draw!" : " Wins!";
+
+	const winnerTeam = winner.includes("home") ? derby.home : derby.away;
+
+	console.log(resetGame);
+
 	return (
 		<section className="winner">
 			<div className="text">
+				<header>{winner && <h1 className="winner-team">{winnerTeam}</h1>}</header>
 				<h2>{winnerText}</h2>
-				{/* <header className="win">{winner && <Square>{winner}</Square>}</header> */}
-				<footer>
-					<ResetGame resetGame={resetGame} />
-				</footer>
+				<button className="play-again" onClick={resetGame}>
+					Play again
+				</button>
 			</div>
 		</section>
 	);

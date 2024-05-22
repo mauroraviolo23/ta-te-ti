@@ -1,7 +1,10 @@
-export function DerbyFlag({ flag }) {
+export function DerbyFlag({ flag, selectDerby }) {
+	const handleClick = () => {
+		selectDerby(flag);
+	};
 	return (
-		<div className="derby-flag">
-			<img src={flag} alt="Country flag" className="derby-flag-img" />
-		</div>
+		<button className="derby-flag" onClick={handleClick}>
+			<img src={flag.img} alt="Country flag" className="derby-flag-img" />
+		</button>
 	);
 }

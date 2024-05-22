@@ -1,6 +1,6 @@
 export const TURNS = {
-	FIRST_PLAYER: "src/img/football-shoe-svgrepo-com.svg",
-	SECOND_PLAYER: "src/img/football-svgrepo-com.svg",
+	FIRST_PLAYER: "src/img/home-player.svg",
+	SECOND_PLAYER: "src/img/away-player.svg",
 };
 
 export const WINNER_COMBINATIONS = [

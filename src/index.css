@@ -4,6 +4,9 @@
   line-height: 24px;
   font-weight: 400;
 
+  max-width: fit-content;
+  max-height: fit-content;
+
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
   background-color: #242424;
@@ -19,8 +22,8 @@ body {
   margin: 0;
   display: flex;
   justify-content: center;
-  min-width: 320px;
-  min-height: 100vh;
+  /* align-items: center; */
+  overflow: hidden;
 }
 
 * {
@@ -31,8 +34,20 @@ body {
 
 .board {
   width: fit-content;
-  margin: 40px auto;
+  margin: auto;
   text-align: center;
+}
+
+@media (max-width: 1200px) {
+  .board {
+      transform: scale(0.8);
+  }
+}
+
+@media (max-width: 800px) {
+  .board {
+      transform: scale(0.6);
+  }
 }
 
 .board-and-turns {
@@ -57,24 +72,6 @@ body {
   transform: rotate(-2deg);
 }
 
-.board button {
-  padding: 8px 12px;
-  margin: 25px;
-  background: transparent;
-  border: 2px solid #eee;
-  color: #eee;
-  width: 100px;
-  border-radius: 5px;
-  transition: 0.2s;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-.board button:hover {
-  background: #eee;
-  color: #222;
-}
-
 .board .game {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -92,8 +89,8 @@ body {
 
 .turn .square,
 .winner .square {
-  width: 70px;
-  height: 70px;
+  width: 80px;
+  height: 80px;
   pointer-events: none;
   border-color: transparent;
 }
@@ -152,9 +149,23 @@ body {
   background-color: rgba(0, 0, 0, 0.7);
 }
 
+@media (max-width: 1200px) {
+  .winner {
+    background-color: transparent;
+    left: auto;
+  }
+}
+
+@media (max-width: 800px) {
+  .winner {
+    left: auto;
+  }
+}
+
+
 .winner .text {
   background: #111;
-  height: 300px;
+  height: 320px;
   width: 320px;
   border: 2px solid #eee;
   border-radius: 10px;
@@ -174,6 +185,11 @@ body {
   gap: 15px;
 }
 
+.winner-team {
+  color: #fff;
+  line-height: 110%;
+}
+
 .square {
   width: 100px;
   height: 100px;
@@ -183,6 +199,11 @@ body {
   place-items: center;
   cursor: pointer;
   font-size: 48px;
+}
+
+.square:hover {
+  transform: scale(1.1);
+  filter: brightness(120%);
 }
 
 .options {
@@ -195,7 +216,7 @@ body {
   justify-content: center;
   align-items: center;
   padding: 6px;
-  margin: 0px 5px;
+  margin: 10px;
 }
 
 .config img{
@@ -214,11 +235,31 @@ body {
   width: 60px;
   height: 60px;
   display: flex;
-  place-items: center;
-  margin: 0px 5px;
+  justify-content: center;
+  align-items: center;
+  margin: 5px;
+  background-color: transparent;
+  border: none;
+}
+
+.derby-flag:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+  filter: brightness(120%);
 }
 
 .derby-flag-img {
   max-width: 100%;
   max-height: 100%;
+}
+
+.play-again {
+  background-color: #000;
+  border-radius: 5%;
+  border: 1px solid #fff;
+  padding: 10px;
+  font-family: "Freeman", serif;
+  font-size: 20px;
+  color: #fff;
+  cursor: pointer;
 }
