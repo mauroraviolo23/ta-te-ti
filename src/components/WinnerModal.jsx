@@ -2,8 +2,10 @@ export function WinnerModal({ winner, derby, resetGame }) {
 	if (winner === null) return null;
 
 	const winnerText = winner === false ? "Draw!" : " Wins!";
-
-	const winnerTeam = winner.includes("home") ? derby.home : derby.away;
+	let winnerTeam = "None";
+	if (winner) {
+		winnerTeam = winner.includes("home") ? derby.home : derby.away;
+	}
 
 	console.log(resetGame);
 

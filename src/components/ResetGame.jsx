@@ -1,4 +1,4 @@
-import ResetSVG from "../img/reload-svgrepo-com.svg";
+import ResetSVG from "../../public/img/reload-svgrepo-com.svg";
 
 export function ResetGame({ resetGame }) {
 	return (
